@@ -17,8 +17,6 @@ $accessKey = getenv('ACCESSKEY');
 $secretKey = getenv('SECRETKEY');
 $associateTag = getenv('ASSOCIATETAG');
 
-echo $accessKey;
-
 $conf
     ->setCountry('co.jp')
     ->setAccessKey($accessKey)
