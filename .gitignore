@@ -1,0 +1,6 @@
+*~
+.env
+*tags
+/vendor
+composer.phar
+.DS_Store

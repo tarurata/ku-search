@@ -1,0 +1,6 @@
+{
+    "require": {
+        "exeu/apai-io": "^2.2",
+        "vlucas/phpdotenv": "^3.3"
+    }
+}
