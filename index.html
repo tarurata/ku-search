@@ -8,8 +8,6 @@
         <title>Kindle Unlimited search</title>
     </head>
     <body>
-        <input type="text" id="searchword" value="" size="100">
-        <input type="button" value="検索" >
 
         <div id="app">
 
@@ -25,8 +23,10 @@
             label="kindle unlimited の本を検索"
             id="searchword"
           ></v-text-field>
+
+          <v-btn color="orange" class="searchbtn  white--text" onclick="kuSearch();">検索</v-btn>
           
-        <v-btn color="検索" class="searchbtn white--text" onclick="kuSearch();">検索</v-btn>
+
         </v-layout>
         </v-flex>
 
