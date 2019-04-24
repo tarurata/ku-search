@@ -12,23 +12,25 @@
         <div id="app">
 
         <v-card>
-        <v-container>
+        <v-container align-center>
             <v-subheader class="pa-0">Kindle Unlimited作品のみを検索します。
             </v-subheader>
         <v-card-title class="headline font-weight-regular orange white--text">Kindle Unlimited 検索</v-card-title>
 
-        <v-flex xs12 sm6 md3>
+        <v-flex xs12 sm6 class="d-flex align-center">
         <v-layout>
           <v-text-field
             label="kindle unlimited の本を検索"
+            single-line
+            solo
             id="searchword"
           ></v-text-field>
 
           <v-btn color="orange" class="searchbtn  white--text" onclick="kuSearch();">検索</v-btn>
-          
 
         </v-layout>
         </v-flex>
+
 
         </v-container>
         </v-card>
