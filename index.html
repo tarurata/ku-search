@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <!--CDN for MaterialIcons-->
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons" rel="stylesheet">
          <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
          <link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
@@ -12,22 +13,24 @@
 
         <div id="app">
 
-        <v-container align-center justify-center>
+        <v-container>
             <v-subheader class="pa-0">Kindle Unlimited作品のみを検索します。
             </v-subheader>
+            
+            <v-layout align-center justify-center>
+            <v-flex xs4 sm6>
             <v-card-title class="headline font-weight-regular orange white--text">Kindle Unlimited 検索</v-card-title>
-
-            <v-layout >
-            <v-flex xs4 sm6 s="d-flex align-center">
               <v-text-field
+
                 label="kindle unlimited の本を検索"
                 single-line
                 solo
+                append-icon="search" class="searchbtn"
                 id="searchword"
               >
               
-              
-              <v-btn color="orange" class="searchbtn  white--text" onclick="kuSearch();">検索</v-btn>
+              <!--onclick="kuSearch();-->
+              <v-btn color="orange" >検索</v-btn>
               </v-text-field>
 
 
