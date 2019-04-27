@@ -2,5 +2,7 @@
 .env
 *tags
 /vendor
+/.firebase
 composer.phar
 .DS_Store
+
