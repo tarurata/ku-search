@@ -1,36 +1,52 @@
 <?php
-//namespace Acme\Demo;
+
 require_once "vendor/autoload.php";
 
 $dotenv = Dotenv\Dotenv::create(__DIR__);
 $dotenv->load();
 
-use ApaiIO\Configuration\GenericConfiguration;
-use ApaiIO\Operations\Search;
-use ApaiIO\ApaiIO;
-
-$conf = new GenericConfiguration();
-$client = new \GuzzleHttp\Client();
-$request = new \ApaiIO\Request\GuzzleRequest($client);
+$host = 'ecs.amazonaws.jp';
+$path = '/onca/xml';
 
 $accessKey = getenv('ACCESSKEY');
 $secretKey = getenv('SECRETKEY');
 $associateTag = getenv('ASSOCIATETAG');
 
-$conf
-    ->setCountry('co.jp')
-    ->setAccessKey($accessKey)
-    ->setSecretKey($secretKey)
-    ->setAssociateTag($associateTag)
-    ->setRequest($request);
-$apaiIO = new ApaiIO($conf);
+$params = array(
+    'AWSAccessKeyId' => $accessKey,
+    'AssociateTag' => $associateTag,
+    'Service' => 'AWSECommerceService',
+    'Operation' => 'ItemLookup',
+    //'ItemId' => 'B00008OE6I',
+    'ResponseGroup' => 'Small,Images',
+    'Timestamp' => gmdate('Y-m-d\TH:i:s\Z')
+);
 
-$search = new Search();
-//$search->setCategory('DVD');
-//$search->setActor('Bruce Willis');
-$search->setKeywords('abcd');
+ksort($params);
 
+$parameter = '';
+foreach ($params as $key => $value){
+    $parameter .= $key . '=' . rawurlencode($value) . '&';
+}
 
-$formattedResponse = $apaiIO->runOperation($search);
+$parameter = rtrim($parameter, '&');
 
-var_dump($formattedResponse);
+$signature = "GET\n" . $host . "\n" . $path . "\n" . $parameter;
+$signature = hash_hmac('sha256', $signature, $secretKey, true);
+$signature = rawurlencode(base64_encode($signature));
+
+$requestUrl = 'http://' . $host . $path . '?' . $parameter . '&Signature=' . $signature;
+
+echo $requestUrl;
+
+$xml = simplexml_load_file($requestUrl);
+
+echo $xml;
+
+//$item = $xml->Items->Item;
+//$pageUrl = $item->DetailPageURL;
+//$attributes = $item->MediumImage->URL;
+//$title = $attributes->Title;
+
+?>
+
