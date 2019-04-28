@@ -40,8 +40,8 @@
         </v-container>
 
         <ul>
-            <li v-for="item in itemData">
-                {{ item.item }}
+            <li v-for="item in itemdata">
+                {{ item.name }}
             </li>
         </ul>
 
@@ -62,11 +62,11 @@
                     }
                 },
                 data: {
-                    itemData:[
+                    itemdata:[
                     <?php 
                         require('scrape.php');
                         foreach($items as $item) {
-                            echo '{ item:"'. $item .'" },';
+                            echo '{ name:"'. $item .'" },';
                         }
                     ?>
                     ]
