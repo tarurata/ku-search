@@ -41,7 +41,7 @@
 
         <ul>
             <li v-for="item in itemData">
-                {{ item }}
+                {{ item.value }}
             </li>
         </ul>
 
