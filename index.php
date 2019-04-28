@@ -66,7 +66,7 @@
                     <?php 
                         require('scrape.php');
                         foreach($items as $item) {
-                            echo '{ item:"'. $item .'" },';
+                            echo 'item:"'. $item .'",';
                         }
                     ?>
                     ]
