@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-aaaaaaaaaaaaaaaaaaaaaa
 <html lang="ja">
     <head>
         <!--CDN for MaterialIcons-->
@@ -40,6 +39,12 @@ aaaaaaaaaaaaaaaaaaaaaa
 
         </v-container>
         </div>
+
+    <?php
+        require('scrape.php');
+        echo $mathes;
+
+    ?>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
