@@ -38,6 +38,13 @@
             </v-layout>
 
         </v-container>
+
+        <ul>
+            <li v-for="item in itemData">
+                {{ item }}
+            </li>
+        </ul>
+
         </div>
 
 
