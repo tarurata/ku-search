@@ -6,7 +6,7 @@ $html = file_get_contents('https://www.amazon.co.jp/s?k=%E6%8A%80%E8%A1%93%E6%9B
 
 //$items = phpQuery::newDocument($html)->find("h2")->find("a")->find("span")->text();
 
-for($i=0;$i<3;$i++){
+for($i=0;$i<16;$i++){
     $items[] = phpQuery::newDocument($html)->find("h2")->find("a")->find("span:eq($i)")->text();
 }
 
