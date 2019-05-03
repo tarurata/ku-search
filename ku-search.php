@@ -2,6 +2,7 @@
 
 require_once "vendor/autoload.php";
 
+// .envから環境変数の読み込み
 $dotenv = Dotenv\Dotenv::create(__DIR__);
 $dotenv->load();
 
