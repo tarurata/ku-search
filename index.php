@@ -9,13 +9,22 @@
             .v-input__icon--append .v-icon {
                 <!--background-color: #FFA000;-->
             }
-
+            .center {
+              display: block;
+              margin-top: 15px;
+              margin-bottom: 5px;
+              margin-left: auto;
+              margin-right: auto;
+              width: 50%;
+            }
          </style>
         <meta http-equiv="content-type" charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
         <title>Kindle Unlimited search</title>
     </head>
     <body>
+
+<img src="./logo.jpg" alt="" class="center">
 
         <div id="app">
 
@@ -39,11 +48,20 @@
 
         </v-container>
 
-        <ul>
-            <li v-for="item in itemdata">
-                {{ item.name }}
-            </li>
-        </ul>
+
+
+            <div dense v-for="item in itemdata">
+                    {{ item.name }}
+                <v-img 
+                    :src="item.imgsrc" alt=""
+                    max-height="120"
+                    contain
+                >
+                </v-img>
+                <v-divider></v-divider>
+
+            </div>
+
 
         </div>
 
@@ -67,7 +85,7 @@
                         require('scrape.php');
                         foreach($items as $item) {
                            // echo 'item:"'. $item .'",';
-                            echo '{ name:"'. $item .'" },';
+                            echo '{ name:"'. $item[0] .'", imgsrc:"'. $item[1] .'" },';
                         }
                     ?>
                     ]
