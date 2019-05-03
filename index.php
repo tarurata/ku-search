@@ -66,11 +66,8 @@
                     <?php 
                         require('scrape.php');
                         foreach($items as $item) {
-<<<<<<< HEAD
                             echo 'item:"'. $item .'",';
-=======
                             echo '{ name:"'. $item .'" },';
->>>>>>> deb36c6d7286d0f4fa9f585d0df790c75f690db7
                         }
                     ?>
                     ]
