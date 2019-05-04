@@ -49,19 +49,22 @@
         </v-container>
 
 
+        <div v-for="item in itemdata">
+            <v-card 
+                :href="item.link"
+                target="new"
+            >
+                    <v-img 
+                        :src="item.imgsrc" alt=""
+                        max-height="120"
+                        contain
+                    >
+                    </v-img>
+                    <v-card-title>{{item.name}}</v-card-title>
 
-            <div dense v-for="item in itemdata">
-                    {{ item.name }}
-                <v-img 
-                    :src="item.imgsrc" alt=""
-                    max-height="120"
-                    contain
-                >
-                </v-img>
-                <v-divider></v-divider>
 
-            </div>
-
+            </v-card>
+        </div>
 
         </div>
 
@@ -84,8 +87,7 @@
                     <?php 
                         require('scrape.php');
                         foreach($items as $item) {
-                           // echo 'item:"'. $item .'",';
-                            echo '{ name:"'. $item[0] .'", imgsrc:"'. $item[1] .'" },';
+                            echo '{ name:"'. $item["name"] .'", link: "https://www.amazon.co.jp'. $item["link"] .'", imgsrc:"'. $item["imgsrc"] .'" },';
                         }
                     ?>
                     ]

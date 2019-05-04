@@ -10,8 +10,10 @@ $html = file_get_contents('https://www.amazon.co.jp/s?k=%E6%8A%80%E8%A1%93%E6%9B
 for($i=0;$i<16;$i++){
     // :eq($i) means that item of number "i"
     $items[] = [
-                phpQuery::newDocument($html)->find("h2")->find("a")->find("span:eq($i)")->text(),
-                phpQuery::newDocument($html)->find("img.s-image:eq($i)")->attr('src')
+                'name'=>phpQuery::newDocument($html)->find("h2")->find("a")->find("span:eq($i)")->text(),
+                'link'=>phpQuery::newDocument($html)->find("h2")->find("a.a-link-normal:eq($i)")->attr('href'),
+                'imgsrc'=>phpQuery::newDocument($html)->find("img.s-image:eq($i)")->attr('src')
                ];
 }
 
+//var_dump($items);
