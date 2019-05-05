@@ -1,3 +1,4 @@
+<?php require './scrape.php' ?>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -49,24 +50,34 @@
         </v-container>
 
 
-        <div v-for="item in itemdata">
-            <v-card 
-                :href="item.link"
-                target="new"
+
+
+
+        <v-layout row wrap>
+            <v-flex
+                v-for="item in itemdata"
             >
-                    <v-img 
-                        :src="item.imgsrc" alt=""
-                        max-height="120"
-                        contain
-                    >
-                    </v-img>
-                    <v-card-title>{{item.name}}</v-card-title>
+                <v-card 
+                    :href="item.link"
+                    target="new"
+                >
+                        <v-img 
+                            :src="item.imgsrc" alt=""
+                            max-height="120"
+                            contain
+                        >
+                        </v-img>
+                        <v-card-title primary-title>{{item.name}}</v-card-title>
 
 
-            </v-card>
+                </v-card>
+            </v-flex>
+        </v-layout>
+
         </div>
 
-        </div>
+
+
 
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -78,19 +89,33 @@
                     kuSearch(){
                         var searchWord = document.getElementById('searchword').value;
                         var encodedSearchWord = encodeURIComponent(searchWord);
-                        var url = 'https://www.amazon.co.jp/s/ref=sr_nr_p_n_feature_nineteen_0?rh=n%3A2250738051%2Ck%3A' + encodedSearchWord + '%2Cp_n_feature_nineteen_browse-bin%3A3169286051'
-                        window.open(url);
+                        //var url = 'https://www.amazon.co.jp/s/ref=sr_nr_p_n_feature_nineteen_0?rh=n%3A2250738051%2Ck%3A' + encodedSearchWord + '%2Cp_n_feature_nineteen_browse-bin%3A3169286051'
+                        //window.location.href(`/?k=encodedSearchWord`);
+                        window.location.href = '?k=' + encodedSearchWord;
+                        
+                        //window.open(url);
+                    },
+                    //kuSearchInsidePage(){
+                        //var searchWord = document.getElementById('searchword').value;
+                        //var encodedSearchWord = encodeURIComponent(searchWord);
+                        //var url = 'https://www.amazon.co.jp/s/ref=sr_nr_p_n_feature_nineteen_0?rh=n%3A2250738051%2Ck%3A' + encodedSearchWord + '%2Cp_n_feature_nineteen_browse-bin%3A3169286051'
+                        //<?php 
+                            //require('scrape.php');
+                            //this.itemdata:[
+                            //foreach($items as $item) {
+                                //echo '{ name:"'. $item["name"] .'", link: "https://www.amazon.co.jp'. $item["link"] .'", imgsrc:"'. $item["imgsrc"] .'" },';
+                            //}
+                        //?>
                     }
                 },
                 data: {
-                    itemdata:[
+                itemdata: <?= json_encode($items);?>
                     <?php 
-                        require('scrape.php');
-                        foreach($items as $item) {
-                            echo '{ name:"'. $item["name"] .'", link: "https://www.amazon.co.jp'. $item["link"] .'", imgsrc:"'. $item["imgsrc"] .'" },';
-                        }
+                        
+                        //foreach($items as $item) {
+                            //echo '{ name:"'. $item["name"] .'", link: "https://www.amazon.co.jp'. $item["link"] .'", imgsrc:"'. $item["imgsrc"] .'" },';
+                        //}
                     ?>
-                    ]
                 }
 
             })
