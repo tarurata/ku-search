@@ -50,30 +50,31 @@
         </v-container>
 
 
-
-
-
+        <v-flex xs12>
         <v-layout row wrap>
-            <v-flex
-                v-for="item in itemdata"
-            >
                 <v-card 
+                    v-for="item in itemdata"
                     :href="item.link"
                     target="new"
                 >
+                        <v-flex >
                         <v-img 
                             :src="item.imgsrc" alt=""
-                            max-height="120"
+                            max-height="200"
                             contain
                         >
                         </v-img>
-                        <v-card-title primary-title>{{item.name}}</v-card-title>
+                        </v-flex>
 
+                        <v-flex >
+                        <v-card-title primary-title>
+                            <div>{{item.name}}</div>
+                        </v-card-title>
+                        </v-flex>
 
                 </v-card>
-            </v-flex>
         </v-layout>
-
+        </v-flex>
         </div>
 
 
@@ -82,6 +83,8 @@
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
         <script>
             new Vue({ 
                 el: '#app',
@@ -89,34 +92,18 @@
                     kuSearch(){
                         var searchWord = document.getElementById('searchword').value;
                         var encodedSearchWord = encodeURIComponent(searchWord);
-                        //var url = 'https://www.amazon.co.jp/s/ref=sr_nr_p_n_feature_nineteen_0?rh=n%3A2250738051%2Ck%3A' + encodedSearchWord + '%2Cp_n_feature_nineteen_browse-bin%3A3169286051'
-                        //window.location.href(`/?k=encodedSearchWord`);
                         window.location.href = '?k=' + encodedSearchWord;
                         
-                        //window.open(url);
-                    },
-                    //kuSearchInsidePage(){
-                        //var searchWord = document.getElementById('searchword').value;
-                        //var encodedSearchWord = encodeURIComponent(searchWord);
-                        //var url = 'https://www.amazon.co.jp/s/ref=sr_nr_p_n_feature_nineteen_0?rh=n%3A2250738051%2Ck%3A' + encodedSearchWord + '%2Cp_n_feature_nineteen_browse-bin%3A3169286051'
-                        //<?php 
-                            //require('scrape.php');
-                            //this.itemdata:[
-                            //foreach($items as $item) {
-                                //echo '{ name:"'. $item["name"] .'", link: "https://www.amazon.co.jp'. $item["link"] .'", imgsrc:"'. $item["imgsrc"] .'" },';
-                            //}
-                        //?>
                     }
                 },
                 data: {
-                itemdata: <?= json_encode($items);?>
-                    <?php 
-                        
-                        //foreach($items as $item) {
-                            //echo '{ name:"'. $item["name"] .'", link: "https://www.amazon.co.jp'. $item["link"] .'", imgsrc:"'. $item["imgsrc"] .'" },';
-                        //}
-                    ?>
+                    itemdata: <?= json_encode($items);?>
                 }
+                //mounted () {
+                    //axios
+                        //.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+                        //.then(response => (this.info = response.data.bpi))
+                //}
 
             })
         </script>

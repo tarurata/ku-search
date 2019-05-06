@@ -9,14 +9,12 @@ $url = 'https://www.amazon.co.jp/s?k=' . urlencode($k) . '&rh=n%3A2250738051%2Cp
 $html = file_get_contents($url);
 
 //$items = phpQuery::newDocument($html)->find("h2")->find("a")->find("span")->text();
-//echo 'aiueo';
 
 for($i=0;$i<16;$i++){
-//echo 'aiueo';
     // :eq($i) means that item of number "i"
     $items[] = [
                 'name'=>phpQuery::newDocument($html)->find("h2")->find("a")->find("span:eq($i)")->text(),
-                'link'=>phpQuery::newDocument($html)->find("h2")->find("a.a-link-normal:eq($i)")->attr('href'),
+                'link'=>"https://www.amazon.co.jp" . phpQuery::newDocument($html)->find("h2")->find("a.a-link-normal:eq($i)")->attr('href'),
                 'imgsrc'=>phpQuery::newDocument($html)->find("img.s-image:eq($i)")->attr('src')
                ];
 }
