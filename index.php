@@ -32,12 +32,13 @@
         <v-container>
             
             <v-layout align-center justify-center>
-            <v-flex xs4 sm6>
+            <v-flex xs4 sm6 center>
             <v-text-field
                 label="kindle unlimited の本を検索"
                 single-line
                 solo
-                append-icon="search" class="searchbtn"
+                append-icon="search" 
+                class="searchbtn"
                 @keypress.enter="kuSearch()"
                 @click:append="kuSearch()" 
                 id="searchword"
@@ -76,10 +77,6 @@
         </v-layout>
         </v-flex>
         </div>
-
-
-
-
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.js"></script>
