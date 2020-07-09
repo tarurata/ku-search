@@ -30,7 +30,6 @@
         <div id="app">
 
         <v-container>
-            
             <v-layout align-center justify-center>
             <v-flex xs4 sm6 center>
             <v-text-field
@@ -48,12 +47,13 @@
             </v-flex>
             </v-layout>
 
-        </v-container>
 
 
         <v-flex xs12>
         <v-layout row wrap>
                 <v-card 
+                    width="33%"
+                    class="mx-auto"
                     v-for="item in itemdata"
                     :href="item.link"
                     target="new"
@@ -69,13 +69,14 @@
 
                         <v-flex >
                         <v-card-title primary-title>
-                            <div>{{item.name}}</div>
+                            <div>{{item.name.substring(0, 20)}}</div>
                         </v-card-title>
                         </v-flex>
 
                 </v-card>
         </v-layout>
         </v-flex>
+        </v-container>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
