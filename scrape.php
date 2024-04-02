@@ -7,7 +7,6 @@ ini_set('display_errors', 1);
 // User input from query parameters (sanitize this input)
 $k = filter_input(INPUT_GET, 'k', FILTER_SANITIZE_SPECIAL_CHARS) ?? '';
 
-$k = $_REQUEST['k'] ?? '';
 // Construct the URL
 $url = 'https://www.amazon.co.jp/s?k=' . urlencode($k) . '&rh=n%3A2250738051%2Cp_n_feature_nineteen_browse-bin%3A3169286051&ref=sr_nr_p_n_feature_nineteen_0';
 
