@@ -8,7 +8,7 @@ WORKDIR /var/www
 COPY . /var/www
 
 # Use sed to replace the listening port with the one Render expects
-RUN sed -i 's/listen = 9000/listen = 0.0.0.0:10000/' /usr/local/etc/php-fpm.d/zz-docker.conf
+RUN sed -i 's/listen = 9000/listen = 10000/' /usr/local/etc/php-fpm.d/zz-docker.conf
 
 # Expose port 10000 for Render to connect to
 EXPOSE 10000
