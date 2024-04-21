@@ -46,7 +46,6 @@ $xpath = new DOMXPath($dom);
 
 // Fetch the containers for all items. Assuming each item is in a div with a specific class:
 $containers = $xpath->query("//div[@class='sg-col-20-of-24 s-result-item s-asin sg-col-0-of-12 sg-col-16-of-20 sg-col s-widget-spacing-small sg-col-12-of-16']");
-var_dump($containers);
 
 $items = [];
 
