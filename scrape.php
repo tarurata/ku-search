@@ -12,6 +12,16 @@ $url = 'https://www.amazon.co.jp/s?k=' . urlencode($k) . '&rh=n%3A2250738051%2Cp
 
 // Use cURL for HTTP GET
 $ch = curl_init();
+$headers = [
+    'Accept-Encoding: gzip, deflate',
+    'Accept-Language: en-US,en;q=0.9',
+    'Cache-Control: no-cache',
+    'Pragma: no-cache',
+    'User-Agent: Mozilla/5.0 (compatible; your-custom-user-agent)',
+];
+curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -22,8 +32,10 @@ curl_setopt($ch, CURLOPT_ENCODING, ""); // Accepts all encodings and decodes the
 $html = curl_exec($ch);
 curl_close($ch);
 
+
  //Check if HTML was returned
 if (!$html) {
+    print('Error fetching the webpage');
     die('Error fetching the webpage');
 }
 
