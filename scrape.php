@@ -19,8 +19,8 @@ $headers = [
     'Pragma: no-cache',
     'User-Agent: Mozilla/5.0 (compatible; your-custom-user-agent)',
 ];
-curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
+//curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+//curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 curl_setopt($ch, CURLOPT_URL, $url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
